@@ -1,0 +1,14 @@
+.textWrapper {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.quantity {
+  font-size: 28px;
+  font-weight: bold;
+}
