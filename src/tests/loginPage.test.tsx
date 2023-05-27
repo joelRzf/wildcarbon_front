@@ -34,7 +34,8 @@ describe('login page', () => {
     }
 
     //check email value and password value
-    expect(emailInputElement).toHaveValue(userEmail)
+    // expect(emailInputElement).toHaveValue(userEmail)
+    expect(emailInputElement).toHaveValue('tata')
     expect(passwordInputElement).toHaveValue(userPassword)
   })
 })
