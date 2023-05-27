@@ -5,7 +5,6 @@ export async function uploadPictureToCloudinary(fileToUpload: File): Promise<str
         const formData = new FormData();
         formData.append("foo", "bar");
         formData.append("file", fileToUpload);
-        // const endpoint = manifest?.debuggerHost && `http://${manifest.debuggerHost.split(":").shift()}:4040/upload`;
         const endpoint = "http://localhost:4040/upload";
         const response = await axios({
             method: "post",
