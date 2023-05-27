@@ -1,9 +1,9 @@
 import { useLazyQuery } from '@apollo/client'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import CloseIcon from '@mui/icons-material/Close'
-import { currentUserState } from '../atom/currentUserAtom'
+import { currentUserState } from '../../atom/currentUserAtom'
 import { useRecoilState } from 'recoil'
-import forestpicture from '../assets/login-picture.jpg'
+import forestpicture from '../../assets/login-picture.jpg'
 
 import {
   Grid,
@@ -20,7 +20,7 @@ import {
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import LoadingButton from '@mui/lab/LoadingButton'
-import { GET_TOKEN_LOGIN } from '../graphql/queries/users/getTokenQuery'
+import { GET_TOKEN_LOGIN } from '../../graphql/queries/users/getTokenQuery'
 
 const LoginPage = () => {
   const [user, setUser] = useRecoilState(currentUserState)
@@ -149,6 +149,7 @@ const LoginPage = () => {
               loading={loading}
               variant="contained"
               sx={{ mt: 2, mb: 2 }}
+              data-testid='submit-button'
             >
               Se connecter
             </LoadingButton>

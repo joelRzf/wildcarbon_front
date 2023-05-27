@@ -44,7 +44,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "testcafe": "testcafe chrome"
   },
   "eslintConfig": {
     "extends": [
@@ -65,6 +66,7 @@
     ]
   },
   "devDependencies": {
-    "prettier": "2.8.8"
+    "prettier": "2.8.8",
+    "testcafe": "^2.6.0"
   }
 }
