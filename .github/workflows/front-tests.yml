@@ -17,7 +17,7 @@ jobs:
       - name: create env file
         run: |
           touch .env
-          echo "test" >> .env
+          echo "REACT_APP_DB=dbtest" >> .env
       - name: run front jest tests
         run: npm i && npm test
       
