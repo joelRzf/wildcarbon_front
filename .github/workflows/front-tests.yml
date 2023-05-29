@@ -22,8 +22,8 @@ jobs:
         run: npm i && npm test
       
 
-  #launch testcafe tests inside docker compose 
-  testcafe-e2e-test-front:
+  #launch microservices required by testcafe (db+back+image service(to add later))
+  launch-db-and-back:
     needs: jest-test-front
     runs-on: ubuntu-latest 
     steps:
@@ -35,6 +35,19 @@ jobs:
       #     args: "chrome e2e"
       - name: Launch all required microservices, start front and launch testcafe tests 
         run: docker compose -f docker-compose.testcafe.yml up --build
+
+  #launch testcafe tests 
+  testcafe-e2e-test-front:
+      needs: launch-db-and-back
+      name: Run TestCafe Tests
+      runs-on: ubuntu-latest
+      steps:
+        - name: Check out the repository
+          uses: actions/checkout@v3
+        - name: Run tests
+          uses: DevExpress/testcafe-action@latest
+          with:
+              args: "chrome tests"
   docker:
     needs: testcafe-e2e-test-front
     if: github.ref == 'refs/heads/dev'
