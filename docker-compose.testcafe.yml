@@ -60,7 +60,7 @@ services:
         condition: service_healthy
 
     # command: sh -c "npm run start & sleep 20 && npm run testcafe"    
-    command: sh -c "npm run start"    
+    # command: sh -c "npm run start"    
     # healthcheck:
     #   test: curl --fail --request GET --url 'http://localhost:3000' || exit 1
     #   interval: 2s
