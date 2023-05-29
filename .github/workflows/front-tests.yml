@@ -47,7 +47,7 @@ jobs:
         - name: Run tests
           uses: DevExpress/testcafe-action@latest
           with:
-              args: "chrome tests"
+              args: "chrome e2e"
   docker:
     needs: testcafe-e2e-test-front
     if: github.ref == 'refs/heads/dev'
