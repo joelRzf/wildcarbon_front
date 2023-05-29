@@ -3,7 +3,7 @@ services:
     image: postgres
     restart: always
     environment:
-      # - DATABASE_HOST=127.0.0.1
+      - DATABASE_HOST=127.0.0.1
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=azerty
       - POSTGRES_DB=postgres
