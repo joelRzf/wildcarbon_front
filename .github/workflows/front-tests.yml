@@ -38,7 +38,7 @@ jobs:
 
   #launch testcafe tests 
   testcafe-e2e-test-front:
-      needs: launch-db-and-back
+      # needs: launch-db-and-back
       name: Run TestCafe Tests
       runs-on: ubuntu-latest
       steps:
