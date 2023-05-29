@@ -61,12 +61,12 @@ services:
 
     # command: sh -c "npm run start & sleep 20 && npm run testcafe"    
     command: sh -c "npm run start"    
-    healthcheck:
-      test: curl --fail --request GET --url 'http://localhost:3000' || exit 1
-      interval: 2s
-      timeout: 16s
-      retries: 8
-      start_period: 4s
+    # healthcheck:
+    #   test: curl --fail --request GET --url 'http://localhost:3000' || exit 1
+    #   interval: 2s
+    #   timeout: 16s
+    #   retries: 8
+    #   start_period: 4s
     # volumes:
     #   - ./front/frontweb/src/:/app/src/
 
