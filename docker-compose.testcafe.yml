@@ -30,7 +30,7 @@ services:
       - 5050:5050
     restart: always
     environment:
-      - DB=dbtest
+      - DB=localhost
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=azerty
     depends_on:
