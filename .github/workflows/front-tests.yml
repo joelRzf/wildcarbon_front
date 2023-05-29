@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: create env file
         run: |
           touch .env
@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest 
     steps:
       - name: Check out code 
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       # - name: Install TestCafe from 'npm' and Run Tests
       #   uses: DevExpress/testcafe-action@latest
       #   with: 
