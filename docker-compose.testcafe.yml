@@ -66,8 +66,8 @@ services:
       timeout: 16s
       retries: 8
       start_period: 4s
-    volumes:
-      - ./front/frontweb/src/:/app/src/
+    # volumes:
+    #   - ./front/frontweb/src/:/app/src/
 
   # mailhog:
   #   image: mailhog/mailhog:latest
