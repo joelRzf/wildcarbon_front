@@ -20,7 +20,7 @@ jobs:
         run: npm i && npm test
       
 
-  #launch docker compose testcafe
+  #launch testcafe tests inside docker compose 
   testcafe-e2e-test-front:
     needs: jest-test-front
     runs-on: ubuntu-latest 
