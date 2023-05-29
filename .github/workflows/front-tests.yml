@@ -10,6 +10,8 @@ jobs:
   jest-test-front:
     runs-on: ubuntu-latest
     steps:
+      - name: setup node with githubaction setup-node@v3
+        uses: actions/setup-node@v3
       - name: Check out code
         uses: actions/checkout@v3
       - name: create env file
