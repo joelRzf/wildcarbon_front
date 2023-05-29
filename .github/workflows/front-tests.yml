@@ -25,8 +25,8 @@ jobs:
     needs: jest-test-front
     runs-on: ubuntu-latest 
     steps:
-      # - name: Check out code 
-      #   uses: actions/checkout@v2
+      - name: Check out code 
+        uses: actions/checkout@v2
       # - name: Install TestCafe from 'npm' and Run Tests
       #   uses: DevExpress/testcafe-action@latest
       #   with: 
