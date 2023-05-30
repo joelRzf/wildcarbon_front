@@ -23,7 +23,7 @@ jobs:
       
 
   #launch microservices required by testcafe (db+back+image service(to add later))
-  launch-db-back-front:
+  launch-db-back:
     needs: jest-test-front
     runs-on: ubuntu-latest 
     steps:
@@ -38,7 +38,7 @@ jobs:
       #   uses: DevExpress/testcafe-action@latest
       #   with: 
       #     args: "chrome e2e"
-      - name: Launch all required microservices, start front and launch testcafe tests 
+      - name: Launch db and back
         run: docker compose -f docker-compose.testcafev2.yml up --build --exit-code-from back
       # - name: Install node 
       #   uses: actions/setup-node@v3
@@ -49,22 +49,23 @@ jobs:
       #   uses: DevExpress/testcafe-action@latest
       #   with: 
       #       args: "chrome e2e"
-  #launch testcafe tests 
-  # testcafe-e2e-test-front:
-  #     needs: launch-db-back-front
-  #     name: Run TestCafe Tests
-  #     runs-on: ubuntu-latest
-  #     steps:
-  #       - name: Check out the repository
-  #         uses: actions/checkout@v3
-  #       # - name: create env file
-  #       #   run: |
-  #       #     touch .env 
-  #       #     echo "REACT_APP_DB=dbtest" >> .env
-  #       - name: Run tests
-  #         uses: DevExpress/testcafe-action@latest
-  #         with:
-  #             args: "chrome e2e"
+  testcafe-e2e-test-front:
+      needs: launch-db-back
+      name: Run TestCafe Tests
+      runs-on: ubuntu-latest
+      steps:
+        - name: Create env file
+          run: |
+            touch .env 
+            echo "REACT_APP_DB=dbdev" >> .env
+        - name: Check out the repository
+          uses: actions/checkout@v3
+        - name: Start front microservice
+          run: npm start
+        - name: Run testcafe
+          uses: DevExpress/testcafe-action@latest
+          with:
+              args: "chrome e2e"
   docker:
     needs: launch-db-back-front
     if: github.ref == 'refs/heads/dev'

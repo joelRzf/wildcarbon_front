@@ -39,27 +39,27 @@ services:
     command: npm run dev
     # volumes:
     #   - ./back/back/src/:/app/src/
-    healthcheck:
-      test: 'curl --fail --request POST --header ''content-type: application/json'' --url ''http://localhost:5050'' --data ''{"query":"query { __typename }"}'' || exit 1'
-      interval: 2s
-      timeout: 16s
-      retries: 8
-      start_period: 2s
+    # healthcheck:
+    #   test: 'curl --fail --request POST --header ''content-type: application/json'' --url ''http://localhost:5050'' --data ''{"query":"query { __typename }"}'' || exit 1'
+    #   interval: 2s
+    #   timeout: 16s
+    #   retries: 8
+    #   start_period: 2s
 
-  front:
-    build: ./
-    restart: always
-    environment:
-      - REACT_APP_DB=dbdev
-    # env_file:
-    #   - ./front/frontweb/.env
-    ports:
-      - 3000:3000
-    depends_on:
-      back:
-        condition: service_healthy
+  # front:
+  #   build: ./
+  #   restart: always
+  #   environment:
+  #     - REACT_APP_DB=dbdev
+  #   # env_file:
+  #   #   - ./front/frontweb/.env
+  #   ports:
+  #     - 3000:3000
+  #   depends_on:
+  #     back:
+  #       condition: service_healthy
 
-    command: sh -c "npx update-browserslist-db@latest && npm run start && sleep 20 && npm run testcafe"    
+  #   command: sh -c "npx update-browserslist-db@latest && npm run start && sleep 20 && npm run testcafe"    
     # command: sh -c "npm run start"    
     # healthcheck:
     #   test: curl --fail --request GET --url 'http://localhost:3000' || exit 1
