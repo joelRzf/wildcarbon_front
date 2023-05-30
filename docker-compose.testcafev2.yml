@@ -15,14 +15,14 @@ services:
       timeout: 10s
       retries: 10
 
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8081:8080
-    depends_on:
-      dbe2e:
-        condition: service_healthy
+  # adminer:
+  #   image: adminer
+  #   restart: always
+  #   ports:
+  #     - 8081:8080
+  #   depends_on:
+  #     dbe2e:
+  #       condition: service_healthy
 
   back:
     image: razajoeldev/sera-carbon-back:latest
