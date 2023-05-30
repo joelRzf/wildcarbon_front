@@ -27,8 +27,8 @@ jobs:
     needs: jest-test-front
     runs-on: ubuntu-latest 
     steps:
-      # - name: Check out code 
-      #   uses: actions/checkout@v3
+      - name: Check out code 
+        uses: actions/checkout@v3
       # - uses: browser-actions/setup-chrome@v1
       # - run: npx update-browserslist-db@latest
       # - run: chrome --version
