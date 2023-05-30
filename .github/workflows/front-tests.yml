@@ -29,9 +29,9 @@ jobs:
     steps:
       - name: Check out code 
         uses: actions/checkout@v3
-      - uses: browser-actions/setup-chrome@v1
-      - run: npx update-browserslist-db@latest
-      - run: chrome --version
+      # - uses: browser-actions/setup-chrome@v1
+      # - run: npx update-browserslist-db@latest
+      # - run: chrome --version
      
       
       # - name: Install TestCafe from 'npm' and Run Tests
@@ -40,6 +40,18 @@ jobs:
       #     args: "chrome e2e"
       - name: Launch db and back
         run: docker compose -f docker-compose.testcafev2.yml up --build --exit-code-from back
+      - name: Create env file
+        run: |
+          touch .env 
+          echo "REACT_APP_DB=dbdev" >> .env
+      # - name: Check out the repository
+      #   uses: actions/checkout@v3
+      - name: Launch front microservice
+        run: npm start
+      - name: Run testcafe
+        uses: DevExpress/testcafe-action@latest
+        with:
+          args: "chrome e2e"
       # - name: Install node 
       #   uses: actions/setup-node@v3
       #   with: 
@@ -49,23 +61,23 @@ jobs:
       #   uses: DevExpress/testcafe-action@latest
       #   with: 
       #       args: "chrome e2e"
-  testcafe-e2e-test-front:
-      needs: launch-db-back
-      name: Run TestCafe Tests
-      runs-on: ubuntu-latest
-      steps:
-        - name: Create env file
-          run: |
-            touch .env 
-            echo "REACT_APP_DB=dbdev" >> .env
-        - name: Check out the repository
-          uses: actions/checkout@v3
-        - name: Start front microservice
-          run: npm start
-        - name: Run testcafe
-          uses: DevExpress/testcafe-action@latest
-          with:
-              args: "chrome e2e"
+  # testcafe-e2e-test-front:
+  #     needs: launch-db-back
+  #     name: Run TestCafe Tests
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #       - name: Create env file
+  #         run: |
+  #           touch .env 
+  #           echo "REACT_APP_DB=dbdev" >> .env
+  #       - name: Check out the repository
+  #         uses: actions/checkout@v3
+  #       - name: Start front microservice
+  #         run: npm start
+  #       - name: Run testcafe
+  #         uses: DevExpress/testcafe-action@latest
+  #         with:
+  #             args: "chrome e2e"
   docker:
     needs: launch-db-back
     if: github.ref == 'refs/heads/dev'
