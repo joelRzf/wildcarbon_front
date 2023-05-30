@@ -35,6 +35,7 @@ jobs:
       #     args: "chrome e2e"
       - name: Launch all required microservices, start front and launch testcafe tests 
         run: docker compose -f docker-compose.testcafe.yml up --build --exit-code-from front
+        timeout-minutes: 5
       - name: Install node 
         uses: actions/setup-node@v3
         with: 
