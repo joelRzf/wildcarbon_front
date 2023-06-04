@@ -79,10 +79,8 @@ const CreateActivityPage = () => {
     data: activityTypes,
   } = useQuery(GET_ACTIVITY_TYPE)
 
-  const [
-    createActivity,
-    { loading: isLoadingCreateActivity },
-  ] = useMutation(CREATE_ACTIVITY)
+  const [createActivity, { loading: isLoadingCreateActivity }] =
+    useMutation(CREATE_ACTIVITY)
 
   function resetForm() {
     setTitle('')
@@ -156,7 +154,7 @@ const CreateActivityPage = () => {
       <Typography
         component="h1"
         variant="h5"
-        sx={{ mt:10,mb: 1, textAlign: 'center' }}
+        sx={{ mt: 10, mb: 1, textAlign: 'center' }}
       >
         PARTAGEZ VOS ACTIVITES!
       </Typography>
@@ -219,6 +217,7 @@ const CreateActivityPage = () => {
             {activityTypes.getAllActivityTypes.map(
               ({ activityTypeId, label, emoji }: IactivityType) => (
                 <MenuItem
+                  key={activityTypeId}
                   value={activityTypeId}
                 >{`${emoji}  ${label}`}</MenuItem>
               )
