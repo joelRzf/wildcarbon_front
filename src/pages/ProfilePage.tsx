@@ -86,13 +86,15 @@ const ProfilePage = () => {
     fetchPolicy: 'no-cache', // Used for first execution
     variables: { userId: intUserId },
   })
-
+  
+  console.log("🚀 ~ file: ProfilePage.tsx:85 ~ ProfilePage ~ activitiesData:", activitiesData)
+  
   useEffect(() => {
     ;(async () => {
       const res = await getUserActivities()
       setAllActivities(res.data.getPublicOrFollowedUserLastSevenDaysActivities)
     })()
-  }, [])
+  }, [getUserActivities ])
 
   const updateActivityList = async () => {
     const res = await getUserActivities()

@@ -19,7 +19,7 @@ const ActivityListPage = ({ isAllList }: { isAllList: boolean }) => {
       const res = await getMyActivities()
       setAllActivities(res.data.getAllMyActivities)
     })()
-  }, [])
+  }, [getMyActivities])
 
   const updateActivityList = async () => {
     const res = await getMyActivities()

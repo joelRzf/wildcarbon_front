@@ -91,6 +91,7 @@ const SearchUsersBar = () => {
     },
   })
 
+  console.log('>>is loading?>>>', loading)
   const handleSearch = async (value: string) => {
     setSearchValue(value)
     await searchUsers()

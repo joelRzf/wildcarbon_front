@@ -14,7 +14,7 @@ import { GET_MY_LAST_MONTH_ACTIVITIES_GRAPH_DATA } from '../../graphql/queries/c
 import { GET_MY_LAST_YEAR_ACTIVITIES_GRAPH_DATA } from '../../graphql/queries/carbonGraphs/getMyLastYearActivitiesGraphData'
 import CarbonGraphEmissions from '../../components/carbonGraph/stackedGraph/CarbonGraphEmissions'
 import CarbonGraphSums from '../../components/carbonGraph/pieGraph/CarbonGraphSums'
-import { GET_MY_ACTIVITIES } from '../../graphql/queries/activities/getMyActivitiesQuery'
+// import { GET_MY_ACTIVITIES } from '../../graphql/queries/activities/getMyActivitiesQuery'
 import { GET_TOTAL_SUMS_ACTIVITIES_GRAPH_DATA } from '../../graphql/queries/carbonGraphs/getTotalSumsActivitiesGraphData'
 import ActivityListPage from '../ActivityListPage'
 
@@ -42,21 +42,21 @@ const Dashboard = () => {
     }
   )
 
-  const [
-    getMyActivities,
-    {
-      loading: activitiesLoading,
-      error: activitiesError,
-      data: activitiesData,
-    },
-  ] = useLazyQuery(GET_MY_ACTIVITIES, {
-    fetchPolicy: 'no-cache', // Used for first execution
-  })
+  // const [
+  //   getMyActivities,
+  //   {
+  //     loading: activitiesLoading,
+  //     error: activitiesError,
+  //     data: activitiesData,
+  //   },
+  // ] = useLazyQuery(GET_MY_ACTIVITIES, {
+  //   fetchPolicy: 'no-cache', // Used for first execution
+  // })
 
   const {
     data: sumData,
-    loading: sumLoading,
-    error: sumError,
+    // loading: sumLoading,
+    // error: sumError,
   } = useQuery(GET_TOTAL_SUMS_ACTIVITIES_GRAPH_DATA)
 
   const [barChartTimeUnit, setBarChartTimeUnit] =
@@ -107,13 +107,13 @@ const Dashboard = () => {
     getYearBarChartData,
   ])
 
-  if (activitiesLoading || sumLoading) {
-    return <div>Is loading...</div>
-  }
+  // if (activitiesLoading || sumLoading) {
+  //   return <div>Is loading...</div>
+  // }
 
-  if (activitiesError || sumError) {
-    return <div>Une erreur est survenue</div>
-  }
+  // if (activitiesError || sumError) {
+  //   return <div>Une erreur est survenue</div>
+  // }
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>

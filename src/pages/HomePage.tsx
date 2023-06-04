@@ -198,7 +198,7 @@ const HomePage = () => {
                   </Typography>
                 </AccordionDetails>
               </Accordion>
-              <img src={together}></img>
+              <img alt='together 'src={together}></img>
             </Paper>
           </Box>
 

@@ -1,4 +1,4 @@
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserInterface } from "../interfaces/user";
@@ -53,8 +53,9 @@ const RegisterPage = () => {
     passwordconfirm: "",
   });
 
+  console.log (passwordsMatching)
   const navigate = useNavigate();
-  const [createUser, { loading: isLoadingUserCreation, error }] =
+  const [createUser, { loading: isLoadingUserCreation }] =
     useMutation(CREATE_USER);
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {

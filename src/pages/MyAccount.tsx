@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  FormControl,
   FormControlLabel,
   Switch,
   TextField,
@@ -21,11 +20,11 @@ const MyAccount = () => {
   const [newFirstname, setNewFirstname] = useState(user?.firstname)
   const [newLastname, setNewLastname] = useState(user?.lastname)
 
-  const [toggleUserVisibility, { loading, error }] = useMutation(
+  const [toggleUserVisibility] = useMutation(
     TOGGLE_USER_VISIBILITY
   )
 
-  const [updateUserInfos, { loading: updateLoading, error: updateError }] =
+  const [updateUserInfos] =
     useMutation(UPDATE_MY_INFOS, {
       fetchPolicy: 'no-cache',
       variables: {
@@ -34,7 +33,7 @@ const MyAccount = () => {
       },
     })
 
-  const [getMyUserData, { loading: userLoading }] = useLazyQuery(
+  const [getMyUserData] = useLazyQuery(
     GET_MY_USER_DATA,
     {
       fetchPolicy: 'no-cache',

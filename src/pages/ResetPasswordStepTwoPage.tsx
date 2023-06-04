@@ -15,7 +15,7 @@ const RESET_PASSWORD = gql`
 
 const ResetPasswordStepTwoPage = () => {
   const [newPassword, setNewPassword] = useState('')
-  const [resetPassword, { loading, error }] = useMutation(RESET_PASSWORD)
+  const [resetPassword, { loading}] = useMutation(RESET_PASSWORD)
   const navigate = useNavigate()
   //get the resetToken from current url pathname
   const { pathname } = useLocation()
