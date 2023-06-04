@@ -2,7 +2,7 @@ import { useLazyQuery } from '@apollo/client'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import CloseIcon from '@mui/icons-material/Close'
 import { currentUserState } from '../atom/currentUserAtom'
-import { useRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 import forestpicture from '../assets/login-picture.jpg'
 
 import {
@@ -23,13 +23,14 @@ import LoadingButton from '@mui/lab/LoadingButton'
 import { GET_TOKEN_LOGIN } from '../graphql/queries/users/getTokenQuery'
 
 const LoginPage = () => {
-  const [user, setUser] = useRecoilState(currentUserState)
+  const setUser = useSetRecoilState(currentUserState)
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [openError, setOpenError] = useState<boolean>(false)
   const [showPassword, setShowPassword] = useState<boolean>(false)
   const handleClickShowPassword = () => setShowPassword(!showPassword)
   const handleMouseDownPassword = () => setShowPassword(!showPassword)
+
 
   const navigate = useNavigate()
 

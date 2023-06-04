@@ -13,7 +13,7 @@ const REQUEST_RESET_PASS_LINK = gql`
 
 const ResetPasswordStepOnePage = () => {
   const [email, setEmail] = useState('')
-  const [requestResetPassLink, { loading, error }] = useMutation(
+  const [requestResetPassLink, { loading }] = useMutation(
     REQUEST_RESET_PASS_LINK
   )
   const navigate = useNavigate()

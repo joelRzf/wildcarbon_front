@@ -51,7 +51,7 @@ const GoodDealDetails = () => {
         setDisliked(true)
       }
     }
-  }, [dataGetVote])
+  }, [dataGetVote,vote])
 
   const [toggleGoodDealVote, { loading: voteLoading, error: voteError }] =
     useMutation(TOGGLE_VOTE)
