@@ -73,7 +73,7 @@ export default function CarouselContent() {
           (a: any, b: any) =>
             new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
         )
-        .map((e: any) => {
+        .map((e: any, index: number) => {
           const src =
             e.image !== ''
               ? e.image
@@ -84,6 +84,7 @@ export default function CarouselContent() {
               content={e.goodDealContent}
               author={e.user.firstname + ' ' + e.user.lastname}
               image={src}
+              key={index}
             />
           )
         })}
